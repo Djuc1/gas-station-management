@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\CompanyController;
 use App\Http\Controllers\Api\StationController;
 use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\FuelProductController;
+use App\Http\Controllers\Api\StorageTankController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -68,4 +69,19 @@ Route::middleware('auth:sanctum')->prefix('fuel-products')->group(function () {
 
     Route::patch('/{fuelProduct}', [FuelProductController::class, 'update'])
         ->whereNumber('fuelProduct');
+});
+
+Route::middleware('auth:sanctum')->prefix('storage-tanks')->group(function () {
+    Route::get('/', [StorageTankController::class, 'index']);
+
+    Route::post('/', [StorageTankController::class, 'store']);
+
+    Route::get('/{storageTank}', [StorageTankController::class, 'show'])
+        ->whereNumber('storageTank');
+
+    Route::put('/{storageTank}', [StorageTankController::class, 'update'])
+        ->whereNumber('storageTank');
+
+    Route::patch('/{storageTank}', [StorageTankController::class, 'update'])
+        ->whereNumber('storageTank');
 });
