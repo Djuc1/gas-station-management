@@ -55,25 +55,15 @@ class FuelStockMovementController extends Controller
                 'fuelProduct:id,name,code',
                 'performedBy:id,name',
                 'approvedBy:id,name',
-            ])
-            ->where('company_id', $user->company_id);
+            ]);
 
         // Super Admin can view all companies.
-        if ($user->hasRole('Super Admin')) {
-            $query = FuelStockMovement::query()
-                ->with([
-                    'station:id,name,code',
-                    'storageTank:id,name,code',
-                    'fuelProduct:id,name,code',
-                    'performedBy:id,name',
-                    'approvedBy:id,name',
-                ]);
-        } else {
-            // Restrict users to their assigned stations.
-            $stationIds = $user->stations()
-                ->pluck('stations.id');
+        // Other users are restricted to their company and assigned stations.
+        if (!$user->hasRole('Super Admin')) {
+            $stationIds = $user->stations()->pluck('stations.id');
 
-            $query->whereIn('station_id', $stationIds);
+            $query->where('company_id', $user->company_id)
+                ->whereIn('station_id', $stationIds);
         }
 
         if (!empty($validated['station_id'])) {
