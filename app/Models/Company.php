@@ -30,4 +30,14 @@ class Company extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public function suppliers(): HasMany
+    {
+        return $this->hasMany(Supplier::class);
+    }
+
+    public function fuelDeliveries(): HasMany
+    {
+        return $this->hasMany(FuelDelivery::class);
+    }
 }

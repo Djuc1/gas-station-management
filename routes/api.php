@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\FuelProductController;
 use App\Http\Controllers\Api\StorageTankController;
 use App\Http\Controllers\Api\FuelStockMovementController;
+use App\Http\Controllers\Api\SupplierController;
 
 
 /*
@@ -167,6 +168,21 @@ Route::middleware('auth:sanctum')->group(function () {
 
         Route::get('/{fuelStockMovement}', [FuelStockMovementController::class, 'show'])
             ->whereNumber('fuelStockMovement');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Suppliers
+    |--------------------------------------------------------------------------
+    */
+
+    Route::prefix('suppliers')->controller(SupplierController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::post('/', 'store');
+        Route::get('/{supplier}', 'show')->whereNumber('supplier');
+        Route::put('/{supplier}', 'update')->whereNumber('supplier');
+        Route::patch('/{supplier}', 'update')->whereNumber('supplier');
+        Route::patch('/{supplier}/deactivate', 'deactivate')->whereNumber('supplier');
     });
 
 });

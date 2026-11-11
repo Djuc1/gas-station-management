@@ -35,4 +35,9 @@ class Station extends Model
         return $this->belongsToMany(User::class)
             ->withTimestamps();
     }
+
+    public function fuelDeliveries(): HasMany
+    {
+        return $this->hasMany(FuelDelivery::class);
+    }
 }

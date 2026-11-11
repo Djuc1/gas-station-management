@@ -32,6 +32,9 @@ class RolePermissionSeeder extends Seeder
             'fuel-products.view',
             'fuel-products.manage',
 
+            'suppliers.view',
+            'suppliers.manage',
+
             'tanks.view',
             'tanks.manage',
 
@@ -98,6 +101,8 @@ class RolePermissionSeeder extends Seeder
                 'employees.deactivate',
                 'fuel-products.view',
                 'fuel-products.manage',
+                'suppliers.view',
+                'suppliers.manage',
                 'tanks.view',
                 'tanks.manage',
                 'pumps.view',
@@ -134,6 +139,7 @@ class RolePermissionSeeder extends Seeder
                 'dashboard.view',
                 'employees.view',
                 'fuel-products.view',
+                'suppliers.view',
                 'tanks.view',
                 'pumps.view',
                 'fuel-prices.view',
@@ -167,6 +173,7 @@ class RolePermissionSeeder extends Seeder
             'Accountant' => [
                 'dashboard.view',
                 'inventory.view',
+                'suppliers.view',
                 'deliveries.view',
                 'sales.view',
                 'shifts.view',
@@ -185,6 +192,7 @@ class RolePermissionSeeder extends Seeder
                 'stations.view',
                 'employees.view',
                 'inventory.view',
+                'suppliers.view',
                 'deliveries.view',
                 'sales.view',
                 'shifts.view',
@@ -198,6 +206,7 @@ class RolePermissionSeeder extends Seeder
             'Storekeeper' => [
                 'dashboard.view',
                 'fuel-products.view',
+                'suppliers.view',
                 'tanks.view',
                 'inventory.view',
                 'inventory.receive',
